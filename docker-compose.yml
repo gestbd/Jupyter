@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+    
+    jupyter:
+        #image: jupyter/scipy-notebook:lab-4.0.5
+        image: jupyter/scipy-notebook:python-3.8
+        ports:
+          - 8888:8888
+        volumes:
+          - "./notebooks:/home/jovyan/work/notebooks"        
+        command: ["start-notebook.sh","--NotebookApp.token=''","--NotebookApp.password=''"]          
+        networks:
+          - gestbd_net
+
+networks:
+    gestbd_net:
+      external: true
+
